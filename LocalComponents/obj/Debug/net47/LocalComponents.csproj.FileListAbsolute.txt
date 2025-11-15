@@ -1,0 +1,9 @@
+C:\Users\vlads\Desktop\assignment5\WebApplication1\LocalComponents\bin\Debug\net47\LocalComponents.dll
+C:\Users\vlads\Desktop\assignment5\WebApplication1\LocalComponents\bin\Debug\net47\LocalComponents.pdb
+C:\Users\vlads\Desktop\assignment5\WebApplication1\LocalComponents\obj\Debug\net47\LocalComponents.csproj.AssemblyReference.cache
+C:\Users\vlads\Desktop\assignment5\WebApplication1\LocalComponents\obj\Debug\net47\LocalComponents.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vlads\Desktop\assignment5\WebApplication1\LocalComponents\obj\Debug\net47\LocalComponents.AssemblyInfoInputs.cache
+C:\Users\vlads\Desktop\assignment5\WebApplication1\LocalComponents\obj\Debug\net47\LocalComponents.AssemblyInfo.cs
+C:\Users\vlads\Desktop\assignment5\WebApplication1\LocalComponents\obj\Debug\net47\LocalComponents.csproj.CoreCompileInputs.cache
+C:\Users\vlads\Desktop\assignment5\WebApplication1\LocalComponents\obj\Debug\net47\LocalComponents.dll
+C:\Users\vlads\Desktop\assignment5\WebApplication1\LocalComponents\obj\Debug\net47\LocalComponents.pdb
