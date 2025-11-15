@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using WebApplication1.ServiceReference1;
+using LocalComponents;
 
 namespace WebApplication1
 {
@@ -339,44 +340,40 @@ namespace WebApplication1
             catch (WebException webEx)
             {
                 // Handle API errors (404, network issues, etc.)
-                lblAddressError.Text = "Invalid address. Please provide a valid State and ZIP code.";
+                lblAddressError.Text = $"Invalid address. Please provide a valid State and ZIP code. (Error: {webEx.Message})";
             }
             catch (Exception ex)
             {
                 // Handle other errors
-                lblAddressError.Text = "Error validating address. Please try again.";
+                lblAddressError.Text = $"Error validating address: {ex.Message}. Please try again.";
             }
         }
 
         protected void btnDllEncrypt_Click(object sender, EventArgs e)
         {
+            string data = txtDllEncryptInput.Text ?? "";
             try
             {
-                var data = txtDllEncryptInput.Text ?? "";
-                // Use inline implementation for Base64 encoding (Local Component functionality)
-                byte[] bytes = System.Text.Encoding.UTF8.GetBytes(data);
-                var result = Convert.ToBase64String(bytes);
+                string result = EncryptionUtils.Encrypt(data);
                 litDllEncryptResult.Text = HttpUtility.HtmlEncode(result);
             }
             catch (Exception ex)
             {
-                litDllEncryptResult.Text = HttpUtility.HtmlEncode("Error: " + ex.Message);
+                litDllEncryptResult.Text = HttpUtility.HtmlEncode("DLL encryption error: " + ex.Message);
             }
         }
 
         protected void btnDllDecrypt_Click(object sender, EventArgs e)
         {
+            string data = txtDllDecryptInput.Text ?? "";
             try
             {
-                var data = txtDllDecryptInput.Text ?? "";
-                // Use inline implementation for Base64 decoding (Local Component functionality)
-                byte[] bytes = Convert.FromBase64String(data);
-                var result = System.Text.Encoding.UTF8.GetString(bytes);
+                string result = EncryptionUtils.Decrypt(data);
                 litDllDecryptResult.Text = HttpUtility.HtmlEncode(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                litDllDecryptResult.Text = "invalid base64 string";
+                litDllDecryptResult.Text = HttpUtility.HtmlEncode("DLL decryption error: " + ex.Message);
             }
         }
 

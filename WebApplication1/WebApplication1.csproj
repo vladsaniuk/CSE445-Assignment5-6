@@ -299,6 +299,12 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LocalComponents\LocalComponents.csproj">
+      <Project>{16dfcafd-7052-ad5f-50ca-9ed72b8d6642}</Project>
+      <Name>LocalComponents</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
