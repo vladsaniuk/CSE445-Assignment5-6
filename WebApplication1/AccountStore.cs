@@ -170,5 +170,53 @@ namespace WebApplication1
                 return false;
             }
         }
+
+        /// <summary>
+        /// Changes password for an existing member account
+        /// </summary>
+        /// <param name="username">Username of member account (case-insensitive)</param>
+        /// <param name="oldPlainPassword">Current plain text password for verification</param>
+        /// <param name="newPlainPassword">New plain text password to set</param>
+        /// <returns>True if password changed successfully, false if current password is wrong or user not found</returns>
+        public static bool ChangeMemberPassword(string username, string oldPlainPassword, string newPlainPassword)
+        {
+            // Validate input parameters
+            if (string.IsNullOrWhiteSpace(username) || 
+                string.IsNullOrWhiteSpace(oldPlainPassword) || 
+                string.IsNullOrWhiteSpace(newPlainPassword))
+            {
+                return false;
+            }
+
+            EnsureFiles();
+
+            try
+            {
+                var membersDoc = XDocument.Load(MembersPath);
+                var encryptedOldPassword = EncryptionUtils.Encrypt(oldPlainPassword);
+                var encryptedNewPassword = EncryptionUtils.Encrypt(newPlainPassword);
+
+                // Find member with matching username and current password
+                var memberElement = membersDoc.Descendants("Member")
+                    .FirstOrDefault(m => 
+                        string.Equals(m.Element("Username")?.Value, username, StringComparison.OrdinalIgnoreCase) &&
+                        m.Element("PasswordHash")?.Value == encryptedOldPassword);
+
+                if (memberElement == null)
+                {
+                    return false; // Member not found or current password is incorrect
+                }
+
+                // Update password hash with new encrypted password
+                memberElement.Element("PasswordHash").Value = encryptedNewPassword;
+                membersDoc.Save(MembersPath);
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

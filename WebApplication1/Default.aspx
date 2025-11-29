@@ -24,6 +24,11 @@
     <section>
         <asp:Button runat="server" ID="btnMember" Text="Member" OnClick="btnMember_Click" />
         <asp:Button runat="server" ID="btnStaff" Text="Staff" OnClick="btnStaff_Click" />
+        <div style="margin-top: 10px;">
+            <asp:HyperLink ID="hlRegisterFromDefault" runat="server"
+                          NavigateUrl="~/Register.aspx"
+                          Text="New user? Register as a member" />
+        </div>
     </section>
 
     <!-- Service Directory -->
