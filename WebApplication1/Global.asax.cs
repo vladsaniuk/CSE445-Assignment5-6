@@ -16,6 +16,9 @@ namespace WebApplication1
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
+            // Initialize XML account files and default TA account
+            AccountStore.EnsureFiles();
         }
     }
 }

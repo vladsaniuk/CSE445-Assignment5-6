@@ -15,6 +15,10 @@
     </div>
     <div>
         <asp:Button runat="server" ID="btnLogin" Text="Login" OnClick="btnLogin_Click" />
+        <asp:Button runat="server" ID="btnBackToDefault" Text="Back to Default page" OnClick="btnBackToDefault_Click" />
+    </div>
+    <div>
+        <asp:Label runat="server" ID="lblError" ForeColor="Red" />
     </div>
 </form>
 </body>
